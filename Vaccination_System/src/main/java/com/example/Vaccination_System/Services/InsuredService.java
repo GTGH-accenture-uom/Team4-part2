@@ -1,6 +1,6 @@
 package com.example.Vaccination_System.Services;
 
-import com.example.Vaccination_System.models.Insured;
+import com.example.Vaccination_System.Models.Insured;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.Vaccination_System.models;
+package com.example.Vaccination_System.Models;
 
 import java.time.LocalDate;
 

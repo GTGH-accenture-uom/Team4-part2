@@ -1,7 +1,7 @@
 package com.example.Vaccination_System.Controllers;
 
 import com.example.Vaccination_System.Services.InsuredService;
-import com.example.Vaccination_System.models.Insured;
+import com.example.Vaccination_System.Models.Insured;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
