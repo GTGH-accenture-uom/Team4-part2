@@ -9,16 +9,16 @@ public class Insured {
     private LocalDate date;
     private String surname;
     private String email;
-    //private Timeslot timeslot;
+    private Timeslot timeslot;
 
-    public Insured(String afm, String amka, String name, LocalDate date, String surname, String email/*, Timeslot timeslot*/) {
+    public Insured(String afm, String amka, String name, LocalDate date, String surname, String email, Timeslot timeslot) {
         this.afm = afm;
         this.amka = amka;
         this.name = name;
         this.date = date;
         this.surname = surname;
         this.email = email;
-        //this.timeslot = timeslot;
+        this.timeslot = timeslot;
     }
 
     public String getAfm() {
@@ -69,11 +69,11 @@ public class Insured {
         this.email = email;
     }
 
-//    public Timeslot getTimeslot() {
-//        return timeslot;
-//    }
-//
-//    public void setTimeslot(Timeslot timeslot) {
-//        this.timeslot = timeslot;
-//    }
+    public Timeslot getTimeslot() {
+        return timeslot;
+    }
+
+    public void setTimeslot(Timeslot timeslot) {
+        this.timeslot = timeslot;
+    }
 }

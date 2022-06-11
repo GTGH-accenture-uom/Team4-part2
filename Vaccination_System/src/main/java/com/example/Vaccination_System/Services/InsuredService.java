@@ -12,9 +12,11 @@ public class InsuredService {
     private List<Insured> insuredList = new ArrayList<>();
     public List<Insured> getAllInsured() {
         return insuredList;
+
     }
 
     public void createInsured(Insured insured) {
         insuredList.add(insured);
     }
+
 }
