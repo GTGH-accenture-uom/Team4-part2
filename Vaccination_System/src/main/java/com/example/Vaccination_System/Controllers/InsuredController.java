@@ -16,6 +16,7 @@ public class InsuredController {
     @Autowired
     private InsuredService insuredService;
 
+
     @GetMapping(path = "/getInsured")
     public List<Insured> getAllInsured(){
         return insuredService.getAllInsured();
