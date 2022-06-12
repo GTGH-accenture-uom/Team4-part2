@@ -15,4 +15,6 @@ public class TimeslotService {
             timeslotList.add(timeslot);
         }
 
+    public Timeslot findTimeslotById(int timeslotId) {
+    }
 }

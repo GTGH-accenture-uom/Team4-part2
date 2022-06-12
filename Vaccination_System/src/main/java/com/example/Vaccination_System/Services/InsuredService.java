@@ -19,4 +19,6 @@ public class InsuredService {
         insuredList.add(insured);
     }
 
+    public Insured findInsuredByAmka(String insuredAmka) {
+    }
 }

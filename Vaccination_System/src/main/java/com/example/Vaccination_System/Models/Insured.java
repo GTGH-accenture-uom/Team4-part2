@@ -20,6 +20,7 @@ public class Insured {
         this.email = email;
         this.timeslot = timeslot;
     }
+    public Insured(){}
 
     public String getAfm() {
         return afm;
@@ -75,5 +76,8 @@ public class Insured {
 
     public void setTimeslot(Timeslot timeslot) {
         this.timeslot = timeslot;
+    }
+
+    public void setReservation(Reservation reservation) {
     }
 }

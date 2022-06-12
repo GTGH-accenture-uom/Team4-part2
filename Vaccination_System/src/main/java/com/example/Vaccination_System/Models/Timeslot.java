@@ -24,6 +24,7 @@ public class Timeslot {
         this.available = available;
     }
 
+    public Timeslot(){}
     public int getDay() {
         return day;
     }
