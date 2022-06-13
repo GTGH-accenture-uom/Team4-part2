@@ -1,8 +1,9 @@
 package com.example.Vaccination_System.Models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class VaccinationCenter {
+public class VaccinationCenter implements Serializable {
     private String code;
     private String address;
     private List<Timeslot> timeslotList;
