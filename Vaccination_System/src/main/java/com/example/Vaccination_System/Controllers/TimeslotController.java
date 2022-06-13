@@ -8,16 +8,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class TimeslotController {
 
     @Autowired
     private TimeslotService timeslotService;
 
-    @PostMapping(path = "/createTimeslot")
+    @PostMapping(path = "/timeslot")
     public String createTimeslot(@RequestBody Timeslot timeslot){
         timeslotService.createTimeslot(timeslot);
         return "Timeslot created";
+    }
+
+    @GetMapping(path = "/timeslot")
+    public List<Timeslot> getAllTimeslots(){
+        return timeslotService.getAllTimeslots();
+    }
+
+    @PostMapping(path = "/timeslot/updatefile")
+    public String updateFile(){
+        timeslotService.writeFile();
+        return "File updated";
     }
 
 }

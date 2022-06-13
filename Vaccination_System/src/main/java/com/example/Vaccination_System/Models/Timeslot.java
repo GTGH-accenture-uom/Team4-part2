@@ -1,7 +1,13 @@
 package com.example.Vaccination_System.Models;
 
-public class Timeslot {
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Objects;
+
+public class Timeslot implements Serializable {
     private int day;
     private int month;
     private int year;
@@ -9,10 +15,13 @@ public class Timeslot {
     private int minutes;
     private int startMinute;
     private int endMinute;
+    @JsonIgnore
     private Doctor doctor;
     private boolean available;
+    private static int id = 1;
+    private int timeslotId;
 
-    public Timeslot(int day, int month, int year, int hour, int minutes, int startMinute, int endMinute, Doctor doctor, boolean available) {
+    public Timeslot(int day, int month, int year, int hour, int minutes, int startMinute, int endMinute, Doctor doctor) {
         this.day = day;
         this.month = month;
         this.year = year;
@@ -21,10 +30,28 @@ public class Timeslot {
         this.startMinute = startMinute;
         this.endMinute = endMinute;
         this.doctor = doctor;
-        this.available = available;
+        this.available = true;
+        timeslotId = id;
     }
 
     public Timeslot(){}
+
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Timeslot.id = id;
+    }
+
+    public int getTimeslotId() {
+        return timeslotId;
+    }
+
+    public void setTimeslotId(int timeslotId) {
+        this.timeslotId = timeslotId;
+    }
+
     public int getDay() {
         return day;
     }
@@ -95,5 +122,27 @@ public class Timeslot {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public LocalDate getDate(){
+        return LocalDate.of(getYear(),getMonth(),getDay());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Timeslot timeslot = (Timeslot) o;
+        return timeslotId == timeslot.timeslotId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(timeslotId);
+    }
+
+    public LocalTime getTime()
+    {
+        return LocalTime.of(getHour(),getMinutes());
     }
 }
