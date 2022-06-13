@@ -4,8 +4,10 @@ package com.example.Vaccination_System.Services;
 import com.example.Vaccination_System.Models.Doctor;
 import com.example.Vaccination_System.Models.Insured;
 import com.example.Vaccination_System.Models.Vaccination;
+import com.example.Vaccination_System.Models.VaccinationCenter;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,5 +34,43 @@ public class VaccinationService {
                 vaccinationList.add(v);
         }
         return vaccinationList;
+    }
+
+    public Vaccination findVaccinationByInsured(Insured insured){
+        for(Vaccination v : vaccinations){
+            if(v.getInsured().equals(insured)){
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public void writeFile() {
+        try{
+            FileOutputStream writeData = new FileOutputStream("./Vaccination_System/src/main/java/com/example/Vaccination_System/files/VaccinationData.ser");
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+            writeStream.writeObject(vaccinations);
+            writeStream.flush();
+            writeStream.close();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readFile(){
+        try{
+            FileInputStream readData = new FileInputStream("./Vaccination_System/src/main/java/com/example/Vaccination_System/files/VaccinationData.ser");
+            try {
+                ObjectInputStream readStream = new ObjectInputStream(readData);
+                vaccinations = (List<Vaccination>) readStream.readObject();
+                readStream.close();
+            }catch (EOFException eofException){
+                System.out.println("Empty file!");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

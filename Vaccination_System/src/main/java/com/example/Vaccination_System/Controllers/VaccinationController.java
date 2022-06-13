@@ -38,9 +38,14 @@ public class VaccinationController {
         return "Vaccination created!";
     }
 
-    @GetMapping(path = "/vaccinations")
+    @GetMapping(path = "/vaccination")
     public List<Vaccination> getVaccinations(){
         return vaccinationService.getVaccinations();
     }
 
+    @PostMapping(path = "/vaccination/updatefile")
+    public String updateFile(){
+        vaccinationService.writeFile();
+        return "File updated";
+    }
 }

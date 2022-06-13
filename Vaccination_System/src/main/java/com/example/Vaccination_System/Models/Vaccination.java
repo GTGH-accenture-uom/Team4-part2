@@ -1,9 +1,10 @@
 package com.example.Vaccination_System.Models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Vaccination {
+public class Vaccination implements Serializable {
     private Insured insured;
     private Doctor doctor;
     private LocalDate vaccinationDate;
