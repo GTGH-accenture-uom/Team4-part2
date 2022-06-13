@@ -10,10 +10,7 @@ import com.example.Vaccination_System.Services.ReservationService;
 import com.example.Vaccination_System.Services.TimeslotService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,4 +47,19 @@ public class ReservationController {
         return reservationService.getReservations();
     }
 
+    @GetMapping(path = "/upcomingreservation/daily")
+    public List<Reservation> getReservationsByDay(){
+        return reservationService.getReservationsByDay();
+    }
+
+    @GetMapping(path = "/upcomingreservation/total")
+    public List<Reservation> getUpcomingReservations(){
+        return reservationService.getUpcomingReservations();
+    }
+
+    @PostMapping(path = "/reservation/updatefile")
+    public String updateFile(){
+        reservationService.writeFile();
+        return "File updated";
+    }
 }

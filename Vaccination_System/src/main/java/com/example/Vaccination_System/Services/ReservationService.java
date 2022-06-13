@@ -1,8 +1,11 @@
 package com.example.Vaccination_System.Services;
 
+import com.example.Vaccination_System.Models.Insured;
 import com.example.Vaccination_System.Models.Reservation;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,4 +29,50 @@ public class ReservationService {
     }
 
 
+    public List<Reservation> getReservationsByDay() {
+        List<Reservation> reservationList = new ArrayList<>();
+        for (Reservation r: reservations) {
+            if (r.getTimeslot().getDate().equals(LocalDate.now()))
+                reservationList.add(r);
+        }
+        return reservationList;
+    }
+
+    public List<Reservation> getUpcomingReservations() {
+        List<Reservation> reservationList = new ArrayList<>();
+        for (Reservation r: reservations) {
+            if (r.getTimeslot().getDate().isAfter(LocalDate.now()))
+                reservationList.add(r);
+        }
+        return reservationList;
+    }
+
+    public void writeFile() {
+        try{
+            FileOutputStream writeData = new FileOutputStream("./Vaccination_System/src/main/java/com/example/Vaccination_System/files/ReservationData.ser");
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+            writeStream.writeObject(reservations);
+            writeStream.flush();
+            writeStream.close();
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void readFile(){
+        try{
+            FileInputStream readData = new FileInputStream("./Vaccination_System/src/main/java/com/example/Vaccination_System/files/ReservationData.ser");
+            try {
+                ObjectInputStream readStream = new ObjectInputStream(readData);
+                reservations = (List<Reservation>) readStream.readObject();
+                readStream.close();
+            }catch (EOFException eofException){
+                System.out.println("Empty file!");
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

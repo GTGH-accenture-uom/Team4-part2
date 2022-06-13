@@ -1,8 +1,9 @@
 package com.example.Vaccination_System.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 
-public class Reservation {
+public class Reservation implements Serializable {
     private static int id = 1;
     private int reservationId;
     @JsonIgnore
