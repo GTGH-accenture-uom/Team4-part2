@@ -1,6 +1,6 @@
 # Project Title: Vaccine Recording System
 
-#Project Description and Purpose:
+# Project Description and Purpose:
 
 In this Project we used Java Spring to create an Application Programming Interface (API), called the Vaccine Recording System.
 
@@ -18,8 +18,8 @@ All functionalities were implemented by using HTTP calls returning information i
 # Operating Environment
 Vaccine Recording System API was created using:
 
-## Java 11
-## Postman and Swagger UI, as third party tools, in order to perform the calls
+Java 11
+Postman and Swagger UI, as third party tools, in order to perform the calls
 
 # Running the application locally
 In order to run this Spring Boot application on your local machine, you can execute the main method in the com.example.Vaccination_System.VaccinationSystemApplication  class from your IDE.
