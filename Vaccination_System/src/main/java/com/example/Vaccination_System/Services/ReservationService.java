@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,10 @@ public class ReservationService {
                 reservationList.add(r);
         }
         return reservationList;
+    }
+
+    public void checkReservations() {
+        reservations.removeIf(r -> LocalDateTime.of(r.getTimeslot().getDate(), r.getTimeslot().getTime()).isBefore(LocalDateTime.now()));
     }
 
     public void writeFile() {

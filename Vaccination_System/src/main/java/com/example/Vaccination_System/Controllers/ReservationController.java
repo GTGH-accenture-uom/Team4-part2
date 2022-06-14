@@ -62,4 +62,10 @@ public class ReservationController {
         reservationService.writeFile();
         return "File updated";
     }
+
+    @PutMapping(path = "/reservation/checkReservations")
+    public String checkReservations(){
+        reservationService.checkReservations();
+        return "Reservations updated!";
+    }
 }

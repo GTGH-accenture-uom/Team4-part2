@@ -19,6 +19,10 @@ public class InsuredService {
     }
 
     public void createInsured(Insured insured) {
+        for (Insured i: insuredList) {
+            if(i.equals(insured))
+                throw new IllegalStateException("Insured with afm "+ insured.getAfm() + " already exists!");
+        }
         insuredList.add(insured);
     }
 

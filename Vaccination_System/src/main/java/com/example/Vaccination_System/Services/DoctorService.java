@@ -14,7 +14,7 @@ public class DoctorService {
 
     public void createDoctor(Doctor doctor){
         for (Doctor d: doctors) {
-            if(d.getAmka().equals(doctor.getAmka()))
+            if(d.equals(doctor))
                 throw new IllegalStateException("Doctor with AMKA " + doctor.getAmka() + " already exists!");
         }
         doctors.add(doctor);

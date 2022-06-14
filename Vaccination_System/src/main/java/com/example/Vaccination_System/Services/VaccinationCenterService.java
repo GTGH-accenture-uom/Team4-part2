@@ -20,6 +20,10 @@ public class VaccinationCenterService {
     }
 
     public void createVaccinationCenter(VaccinationCenter vaccinationCenter){
+        for (VaccinationCenter vc: vaccinationCenterList) {
+            if(vc.getCode().equals(vaccinationCenter.getCode()))
+                throw new IllegalStateException("A Vaccination Center with code " + vc.getCode() + " already exists!");
+        }
         vaccinationCenterList.add(vaccinationCenter);
     }
 
