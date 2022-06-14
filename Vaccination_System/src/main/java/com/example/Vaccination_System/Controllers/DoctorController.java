@@ -37,11 +37,4 @@ public class DoctorController {
         doctorService.addTimeslotToDoctor(amka,timeslot);
         return "Timeslot done";
     }
-
-    @PostMapping(path = "/doctor/updatefile")
-    public String updateFile(){
-        doctorService.writeFile();
-        return "File updated";
-    }
-
 }

@@ -43,9 +43,4 @@ public class VaccinationController {
         return vaccinationService.getVaccinations();
     }
 
-    @PostMapping(path = "/vaccination/updatefile")
-    public String updateFile(){
-        vaccinationService.writeFile();
-        return "File updated";
-    }
 }

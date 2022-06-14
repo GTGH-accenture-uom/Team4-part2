@@ -23,40 +23,33 @@ public class InsuredController {
     private VaccinationService vaccinationService;
 
     @GetMapping(path = "/insured")
-    public List<Insured> getAllInsured(){
+    public List<Insured> getAllInsured() {
         return insuredService.getAllInsured();
     }
 
     @PostMapping(path = "/insured")
-    public String createInsured(@RequestBody Insured insured){
+    public String createInsured(@RequestBody Insured insured) {
         insuredService.createInsured(insured);
         return "Insured created";
     }
 
     @PutMapping(path = "/reservation/{amka}/changereservation")
     public String changeReservation(@PathVariable(value = "amka") String amka,
-            @RequestParam(name = "timeslotId") int id){
+                                    @RequestParam(name = "timeslotId") int id) {
         insuredService.changeReservation(insuredService.findInsuredByAmka(amka), timeslotService.findTimeslotById(id));
         return "Change Reservation done";
     }
 
     @GetMapping(path = "/vaccinationstatus/{amka}")
-    public String getInsuredStatus(@PathVariable(value = "amka") String amka){
+    public String getInsuredStatus(@PathVariable(value = "amka") String amka) {
         String status = "";
         Insured insured = insuredService.findInsuredByAmka(amka);
         Vaccination vaccination = vaccinationService.findVaccinationByInsured(insured);
-        if(vaccination != null){
+        if (vaccination != null) {
             status += ("The insured with amka: " + amka + " is vaccinated with expiration date: " + vaccination.getExpirationDate().toString());
-        }
-        else {
+        } else {
             status += ("The insured with amka: " + amka + " is not vaccinated");
         }
         return status;
-    }
-
-    @PostMapping(path = "/insured/updatefile")
-    public String updateFile(){
-        insuredService.writeFile();
-        return "File updated";
     }
 }

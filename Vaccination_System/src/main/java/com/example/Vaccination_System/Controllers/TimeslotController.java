@@ -27,10 +27,4 @@ public class TimeslotController {
         return timeslotService.getAllTimeslots();
     }
 
-    @PostMapping(path = "/timeslot/updatefile")
-    public String updateFile(){
-        timeslotService.writeFile();
-        return "File updated";
-    }
-
 }

@@ -57,12 +57,6 @@ public class ReservationController {
         return reservationService.getUpcomingReservations();
     }
 
-    @PostMapping(path = "/reservation/updatefile")
-    public String updateFile(){
-        reservationService.writeFile();
-        return "File updated";
-    }
-
     @PutMapping(path = "/reservation/checkReservations")
     public String checkReservations(){
         reservationService.checkReservations();

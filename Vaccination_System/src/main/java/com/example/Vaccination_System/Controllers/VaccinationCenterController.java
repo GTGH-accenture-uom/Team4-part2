@@ -39,9 +39,4 @@ public class VaccinationCenterController {
         return vaccinationCenterService.searchMonthly(code,month);
     }
 
-    @PostMapping(path = "/vaccinationcenter/updatefile")
-    public String updateFile(){
-        vaccinationCenterService.writeFile();
-        return "File updated";
-    }
 }
