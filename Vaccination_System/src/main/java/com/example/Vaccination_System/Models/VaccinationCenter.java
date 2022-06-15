@@ -1,23 +1,22 @@
 package com.example.Vaccination_System.Models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VaccinationCenter implements Serializable {
     private String code;
     private String address;
-    private List<Timeslot> timeslotList;
+    private List<Timeslot> timeslotList = new ArrayList<>();
 
-    public VaccinationCenter(String code, String address, List<Timeslot> timeslotList) {
+    public VaccinationCenter(String code, String address) {
         this.code = code;
         this.address = address;
-        this.timeslotList = timeslotList;
     }
 
     public VaccinationCenter() {
         this.code = null;
         this.address = null;
-        this.timeslotList = null;
     }
 
     public String getCode() {

@@ -31,7 +31,7 @@ public class DoctorService {
                 return d;
             }
         }
-        throw new IllegalStateException("There is not doctor with this amka");
+        throw new IllegalStateException("There is not doctor with this amka " + doctorAmka + "!");
     }
 
     public void addTimeslotToDoctor(String amka, Timeslot timeslot) {

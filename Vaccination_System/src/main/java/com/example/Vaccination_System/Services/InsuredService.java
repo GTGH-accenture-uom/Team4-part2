@@ -33,7 +33,7 @@ public class InsuredService {
                 return i;
             }
         }
-        throw new IllegalStateException("Insured does not exist");
+        throw new IllegalStateException("Insured with AMKA " + insuredAmka + " does not exist");
         }
 
 

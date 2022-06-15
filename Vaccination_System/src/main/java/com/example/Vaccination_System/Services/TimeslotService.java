@@ -35,13 +35,14 @@ public class TimeslotService {
         public void addDoctorToTimeslot(Doctor doctor,int id){
             Timeslot timeslot = findTimeslotById(id);
             if(timeslot.getDoctor() != null){
-                throw new IllegalStateException("Doctor is not available");
+                throw new IllegalStateException("This timeslot is already given to a doctor!");
             }
             for (Timeslot t : timeslotList){
                 if(t.getDoctor() != null){
                     if ((t.getDoctor().equals(doctor)) && LocalDateTime.of(t.getDate(),t.getTime()).equals(LocalDateTime.of(timeslot.getDate(),timeslot.getTime()))){
                         if (t.getTimeslotId() != id){
-                            throw new IllegalStateException("Doctor is not available");
+                            throw new IllegalStateException("Doctor " + doctor.getName() + " " + doctor.getSurname() +
+                                    " is occupied during that time!");
                         } else if (t.getTimeslotId()==id) {
                             throw new IllegalStateException("This timeslot already exists");
                         }
