@@ -17,6 +17,7 @@ public class Timeslot implements Serializable {
     private int endMinute;
     @JsonIgnore
     private Doctor doctor;
+    private String doctorName;
     private boolean available;
     private static int id = 1;
     private int timeslotId;
@@ -31,6 +32,7 @@ public class Timeslot implements Serializable {
         this.endMinute = endMinute;
         this.doctor = doctor;
         this.available = true;
+        this.doctorName = null;
         this.timeslotId = id;
     }
 
@@ -44,7 +46,7 @@ public class Timeslot implements Serializable {
         this.startMinute = 0;
         this.endMinute = 0;
         this.doctor = null;
-
+        this.doctorName = null;
         this.available = true;
     }
 
@@ -140,6 +142,13 @@ public class Timeslot implements Serializable {
         return LocalDate.of(getYear(),getMonth(),getDay());
     }
 
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
