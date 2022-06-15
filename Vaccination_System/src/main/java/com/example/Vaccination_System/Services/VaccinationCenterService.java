@@ -34,7 +34,7 @@ public class VaccinationCenterService {
                 return vc;
             }
         }
-        throw new IllegalStateException("Vaccination Center does not exist");
+            throw new IllegalStateException("Vaccination Center does not exist");
     }
 
     public List<Timeslot> getAvailableTimeslots(String code, int day, int month, int year) {

@@ -31,10 +31,22 @@ public class Timeslot implements Serializable {
         this.endMinute = endMinute;
         this.doctor = doctor;
         this.available = true;
-        timeslotId = id;
+        this.timeslotId = id;
     }
 
-    public Timeslot(){}
+    public Timeslot(){
+        this.timeslotId = id;
+        this.day = 0;
+        this.month = 0;
+        this.year = 0;
+        this.hour = 0;
+        this.minutes = 0;
+        this.startMinute = 0;
+        this.endMinute = 0;
+        this.doctor = null;
+
+        this.available = true;
+    }
 
     public static int getId() {
         return id;
