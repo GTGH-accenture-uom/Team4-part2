@@ -2,7 +2,7 @@
 
 ## Project Description and Purpose:
 
-In this Project we used Java Spring to create an Application Programming Interface (API), called the Vaccine Recording System.
+In this Project we used Java Spring to create an Application Programming Interface (API), called Vaccine Recording System.
 
 It is the background system of an online Vaccine Recording System platform.
 
