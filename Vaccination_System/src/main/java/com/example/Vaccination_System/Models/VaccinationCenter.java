@@ -42,4 +42,12 @@ public class VaccinationCenter implements Serializable {
     public void setTimeslotList(List<Timeslot> timeslotList) {
         this.timeslotList = timeslotList;
     }
+
+    public void addTimeslot(Timeslot timeslot){
+        for (Timeslot t: timeslotList) {
+            if(t.getTimeslotId() == timeslot.getTimeslotId())
+                throw new IllegalStateException("This timeslot already exists!");
+        }
+        timeslotList.add(timeslot);
+    }
 }

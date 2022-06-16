@@ -128,6 +128,7 @@ public class Timeslot implements Serializable {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+        setDoctorName(doctor.getName() + " " + doctor.getSurname());
     }
 
     public boolean isAvailable() {

@@ -8,6 +8,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -49,7 +50,13 @@ public class ReservationService {
     }
 
     public void checkReservations() {
-        reservations.removeIf(r -> LocalDateTime.of(r.getTimeslot().getDate(), r.getTimeslot().getTime()).isBefore(LocalDateTime.now()));
+        for (Iterator<Reservation> it = reservations.iterator(); it.hasNext();) {
+            Reservation r = it.next();
+            if (LocalDateTime.of(r.getTimeslot().getDate(), r.getTimeslot().getTime()).isBefore(LocalDateTime.now())){
+                r.getTimeslot().setAvailable(true);
+                it.remove();
+            }
+        }
     }
 
     public void writeFile() {

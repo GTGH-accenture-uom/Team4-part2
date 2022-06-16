@@ -2,6 +2,7 @@ package com.example.Vaccination_System.Controllers;
 
 import com.example.Vaccination_System.Models.Timeslot;
 import com.example.Vaccination_System.Models.VaccinationCenter;
+import com.example.Vaccination_System.Services.TimeslotService;
 import com.example.Vaccination_System.Services.VaccinationCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,8 @@ public class VaccinationCenterController {
 
     @Autowired
     private VaccinationCenterService vaccinationCenterService;
+    @Autowired
+    private TimeslotService timeslotService;
 
     @GetMapping(path = "/vaccinationcenter")
     public List<VaccinationCenter> getVaccinationCenters(){
@@ -23,6 +26,13 @@ public class VaccinationCenterController {
     public String createVaccinationCenter(@RequestBody VaccinationCenter vaccinationCenter){
         vaccinationCenterService.createVaccinationCenter(vaccinationCenter);
         return "Vaccination Center created";
+    }
+
+    @PutMapping(path = "/vaccinationcenter/{vcCode}")
+    public String addTimeslot(@PathVariable(value = "vcCode") String vcCode,
+                              @RequestParam(name = "timeslotId") int timeslotId){
+        vaccinationCenterService.addTimeslot(vcCode,timeslotService.findTimeslotById(timeslotId));
+        return "Timeslot added!";
     }
 
     @GetMapping(path = "/reservation/vaccinationcenter/{code}/date")

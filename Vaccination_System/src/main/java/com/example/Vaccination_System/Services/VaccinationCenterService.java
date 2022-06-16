@@ -9,6 +9,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class VaccinationCenterService {
@@ -25,6 +26,13 @@ public class VaccinationCenterService {
                 throw new IllegalStateException("A Vaccination Center with code " + vc.getCode() + " already exists!");
         }
         vaccinationCenterList.add(vaccinationCenter);
+    }
+
+    public void addTimeslot(String vcCode, Timeslot timeslot){
+        for (VaccinationCenter vc: vaccinationCenterList) {
+            if(Objects.equals(vc.getCode(), vcCode))
+                vc.addTimeslot(timeslot);
+        }
     }
 
     public VaccinationCenter findVaccinationCenterByCode(String code){

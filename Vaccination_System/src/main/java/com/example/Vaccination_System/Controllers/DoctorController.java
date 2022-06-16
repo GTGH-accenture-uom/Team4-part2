@@ -5,6 +5,7 @@ import com.example.Vaccination_System.Models.Timeslot;
 import com.example.Vaccination_System.Services.DoctorService;
 
 import com.example.Vaccination_System.Services.TimeslotService;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
